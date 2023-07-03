@@ -40,7 +40,6 @@ export class ReportService {
     data.report.push(newReport) 
     return new ReportReponseDto(newReport)
   }
-
   updateReport(reportType:ReportType,id:string,body:UpdateReport):ReportReponseDto{
     const updateData=  data.report
   .filter((report)=>report.type===reportType)

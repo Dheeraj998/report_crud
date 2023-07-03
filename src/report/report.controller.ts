@@ -7,7 +7,6 @@ import { ReportService } from './report.service';
 @Controller('reports/:type')
 export class ReportController {
   constructor(private readonly reportService: ReportService) {}
-
   @Get()
   getAllReports(@Param('type') type: string):ReportReponseDto[] { 
     const incomingtype = type==='income'? ReportType.INCOME:ReportType.EXPENSE;
@@ -20,6 +19,7 @@ export class ReportController {
     const incomingtype = type==='income'? ReportType.INCOME:ReportType.EXPENSE;
     return this.reportService.getReportById(incomingtype,id);
   }
+  @HttpCode(200)
   @Post()
   createReport(
     @Body() {amount,source}:CreateReportDto,
